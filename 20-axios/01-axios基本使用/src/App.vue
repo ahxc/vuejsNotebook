@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <h3>app内容</h3>
     <span>{{result}}</span>
-    <h3>---分割线---</h3>
+    <h3>helloworld内容</h3>
     <helloworld/>
   </div>
 </template>
@@ -26,7 +27,7 @@
         url: "http://123.207.32.32:8000/home/multidata"
       })
       .then(res=>{
-        console.log(res),
+        // console.log(res),
         this.result = res
       })
     }

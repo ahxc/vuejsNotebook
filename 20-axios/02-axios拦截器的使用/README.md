@@ -1,4 +1,4 @@
-# 01-axios
+# 02-axios-interceptor
 
 > A Vue.js project
 
