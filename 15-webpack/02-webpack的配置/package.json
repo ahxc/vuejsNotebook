@@ -1,0 +1,17 @@
+{
+  "name": "meetwebpack",
+  "version": "1.0.0",
+  "main": "inedx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "annotation": "build优先会从本地环境查找webpack，运行命令：npm run build，映射webpack.conf.js，名字不限",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "annotation": "本地webpack，开发式依赖，类似piplist",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "description": ""
+}

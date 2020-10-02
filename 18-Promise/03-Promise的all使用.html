@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-Promise的all使用</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+  // 使用promise完成需求：两个请求同时成功进行下一步的操作
+  // 最外层Promise拥有两个resolve，函数体内会自动判断两个resolve成功后才递交给
+  Promise.all([
+    new Promise((resolve, reject) => {
+      $.ajax({
+        url: "url1",
+        success: data => {resolve(data)}
+      })
+    }),
+    new Promise((resolve, reject) => {
+      $.ajax({
+        url: "url2",
+        success: data => {resolve(data)}
+      })
+    })
+  ]).then(res => {console.log(res)})
+
+    // settimeout模拟上述过程
+    // 两个resolve的参数会合成一个array["结果A", undefined]，未成功的返回了一个undefined
+    // 第二个不写catch就会报错，整个promise链可供下一步catch
+    Promise.all([
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('结果A')
+        }, 1000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('结果B')
+        }, 1000)
+      })
+      .then(res => {throw 'error message'})
+      .catch(error => {console.log("test")})
+    ])
+    .catch(results => {console.log(results)})
+  </script>
+</body>
+</html>

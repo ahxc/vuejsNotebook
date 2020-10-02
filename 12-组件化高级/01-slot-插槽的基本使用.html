@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slot-插槽的基本使用</title>
+</head>
+
+<body>
+  <!-- 为什么要使用插槽，类似插板提供其他电器扩展，比如，
+    导航栏随着页面的改变提供不同的元素，如搜索框，文本框按钮的互相切换等。 -->
+  <!-- 父组件 -->
+  <div id="app">
+    <cpn>可替换很多控件</cpn>
+    <!-- 子组件的dom元素都将插入插槽 -->
+    <cpn>
+      <span style="color: red;">这是插槽内容222</span>
+    </cpn>
+    <cpn>
+      <i style="color: red;">这是插槽内容333</i>
+    </cpn>
+    <cpn></cpn>
+  </div>
+
+  <!-- 子组件 -->
+  <template id="cpn">
+    <div>
+      <div>
+        {{message}}
+      </div>
+      <!-- 子组件不赋予元素时的插槽默认值 -->
+      <slot><button>button</button></slot>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+          message: "我是子组件"
+        }
+      },
+    }
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "我是父组件消息"
+        }
+      },
+      components: {
+        cpn
+      },
+    })
+  </script>
+</body>
+</html>

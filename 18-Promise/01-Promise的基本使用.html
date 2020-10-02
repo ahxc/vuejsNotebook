@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Promise的基本使用</title>
+</head>
+<body>
+  <!-- es6的一个良好特性promise，promise是一种异步编程解决方案，对层级嵌套请求代码有很好的改善 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    // setTimeout windows函数，经过多长时间回调函数，默认0秒以毫秒为单位，setTimeout(函数, [时间])
+    // 什么情况下要使用Promise，有异步操作网络请求时，使用promise对异步操作进行封装
+    // 基本原理和axios类似，将promise函数体内的函数运行结果作为参数传给then，可将层级嵌套代码改为链条式代码
+    // 1.网络请求成功调用resolve方法传参给then(fulfill满足状态)，2.反之调用reject方法传参给catch(reject拒绝状态)，3.网络还在请求则等待(pending等待状态)
+    new Promise((resolve, reject) => {
+      setTimeout((data) => {resolve(data)}, 1000)
+    })
+    .then(data => {})
+    .then(data => {})
+    .catch(err => {})
+  </script>
+</body>
+</html>

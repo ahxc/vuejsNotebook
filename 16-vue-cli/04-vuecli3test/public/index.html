@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <!--
+      vuecli3与vuecli2的区别
+      1.vuecli3基于webpack4打造，vuecli2基于webpack3
+      2.vuecli3设计原理0配置，移除了build和config
+      3.vuecli3提供了vue ui可视化
+      4.将static文件夹替换为了public，index也移动到了public中
+    -->
+    <!-- vued的webpack配置不再于buildconfig -->
+    <!-- 1.vue ui，2.node_nodules/@vue/cli-serve/webpack.config.js
+      3.在src源码目录下新建vue.config.js文件-->
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+  </body>
+</html>

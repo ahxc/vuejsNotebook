@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>webpack入门</title>
+</head>
+
+<body>
+  <!-- 模块打包工具webpack依赖node环境，npm是node环境下的包管理工具，
+    比如main.j，有关依赖也会一同打包，比如mathUtils.js，模块化思想不限制 -->
+  <!-- 3.新建一个indexhtml文件并使用：webpack ./src/main.js ./dist/bundle.js webpack3使用此命令 -->
+  <!-- 4.最后引用webpack打包后的js文件，每次有新依赖需要重新打包 -->
+  <script src="./dist/bundle.js"></script>
+</body>
+</html>
