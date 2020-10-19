@@ -62,7 +62,7 @@ export default {
     },
     useUpdatainfoandPromise(payload) {
       // 调用的index.js中action包含promise的方法，then写在了Appvue的实例方法内
-      // 当然then也还是可以卸载promise方法内的，先后顺序猜测是先执行玩promise内的
+      // 当然then也还是可以写promise方法内的，先后顺序猜测是先执行玩promise内的
       // 再执行dispatch这的
       this.$store.dispatch("asynchronization", payload)
       .then(res => {

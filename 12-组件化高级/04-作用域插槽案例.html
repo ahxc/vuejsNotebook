@@ -9,13 +9,13 @@
 </head>
 
 <body>
-  <!-- 父组件 -->
+  <!-- 记住规律：插槽里面绑数据，插针里面调数据 -->
   <div id="app">
     <cpn></cpn>
     <!-- 获取子组件数据，结合具名插槽 -->
     <cpn>
       <!-- 2.5以下必须使用template -->
-      <!-- slot对应具名插槽，slot-scope只是调用子组件插槽数据的方法名，可以重名 -->
+      <!-- slot对应具名插槽，slot-scope和得值只是调用子组件插槽数据的方法名，可以重名 -->
       <!-- 注意，只能调用对应的具名插槽的数据，旧写法 -->
       <template slot="slot1" slot-scope="slot1props">
         <!-- <span v-for="(item, index) in slot.data" :key="index">{{item}}-</span> -->
@@ -30,7 +30,7 @@
     </cpn>
   </div>
 
-  <!-- 子组件 -->
+
   <template id="cpn">
     <div>
       <!-- 1.具名插槽的子传父，插槽绑定子数据 -->

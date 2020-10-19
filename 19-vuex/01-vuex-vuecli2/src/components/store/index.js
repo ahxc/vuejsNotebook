@@ -4,7 +4,7 @@ import Vuex from "vuex"
 // 使用vuex步骤和路由相似，1.安装插件
 Vue.use(Vuex)
 
-// 模块化的store除了state调用特殊：$store.state.modulesName.state，
+// 模块化的store除了state调用特殊：$store.state.modulesName.stateName，
 // 其余无区分都是直接调用$store.getters.name，因此需要注意重名，一个App也最好只用一个store
 const moduleA = {
   state: {
@@ -50,7 +50,7 @@ const store = new Vuex.Store({
   },
   // 二、类似methods，包括两个属性事件类型和回调函数
   // vuex要求mutaitons必须是同步方法，主要因为store是响应式的，同时浏览器的devtools会有操作快照，
-  // 异步操作会导致响应的结果与快照不一致，因此不要再mutation中进行异步操作
+  // 异步操作会导致响应的结果与快照不一致，因此不要在mutation中进行异步操作
   // store的规范化写法可已将所有方法单独放在一个js文件中，这样即可以防止重名目录结构也更清晰
   // import mutations from "..."，其他getters，actions，modules亦可，但state一般不抽离
   mutations: {

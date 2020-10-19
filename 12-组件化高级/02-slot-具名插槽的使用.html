@@ -9,6 +9,8 @@
 </head>
 
 <body>
+  <!-- 具名插槽的核心思想：子组件里定插槽，子组件模板里定数据，反过来不可-->
+
   <!-- 父组件 -->
   <div id="app">
     <cpn>
@@ -19,6 +21,7 @@
       <template v-slot:center>这是中间具名插槽</template>
       <!-- 新语法语法糖缩写 -->
       <template #right>这是右边具名插槽</template>
+      <slot name="last">默认</slot>
     </cpn>
   </div>
 
@@ -30,6 +33,7 @@
       <slot name="center">中间</slot>
       <slot name="right">右边</slot>
       <slot>没有具名的插槽</slot>
+      <div slot="last">反着写不行</div>
     </div>
   </template>
 

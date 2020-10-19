@@ -16,7 +16,7 @@ export function axiosrequest(config) {
 
       // 请求的配置被拦截，返回配置继续发送请求不然报错
       return res},
-    // 这里表示请求发送失败的捕捉，一般不会触发，而不是请求失败
+    // 这里表示请求发送失败的捕捉，一般不会触发，此处不是请求失败
     err=>{console.log(err)})
 
   // 响应拦截器
