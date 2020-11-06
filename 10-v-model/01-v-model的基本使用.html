@@ -10,6 +10,7 @@
   <div id="app">
   	<!-- v-model实质就是v-bind和v-on的语法糖 -->
     <!-- 输入框内容修改，message也修改，修改message，input内容也修改，双向绑定 -->
+    <!-- v-model.lazy属性，懒加载，不再实时绑定，通常是元素失去焦点-->
     <input type="text" v-model="message">{{message}}
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>

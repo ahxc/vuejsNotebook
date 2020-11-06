@@ -13,6 +13,7 @@
     // 什么情况下要使用Promise，有异步操作网络请求时，使用promise对异步操作进行封装
     // 基本原理和axios类似，将promise函数体内的函数运行结果作为参数传给then，可将层级嵌套代码改为链条式代码
     // 1.网络请求成功调用resolve方法传参给then(fulfill满足状态)，2.反之调用reject方法传参给catch(reject拒绝状态)，3.网络还在请求则等待(pending等待状态)
+    // 3.resolve类似self+return，resolve之前的语句还是会执行，但他是可带参数并把结果传递给then或catch等
     new Promise((resolve, reject) => {
       setTimeout((data) => {resolve(data)}, 1000)
     })

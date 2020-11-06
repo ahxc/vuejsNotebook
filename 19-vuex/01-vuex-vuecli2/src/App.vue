@@ -57,12 +57,12 @@ export default {
     },
     // action异步的处理步骤1.组件方法调用aciton方法
     useUpdatainfo(payload) {
-      // 与mutation的this.$store.commit("updatainfo", "payload")有区别，官方图19-03
+      // 与mutation的this.$store.commit("updatainfo", "payload")有区别，官方图19-03，同时dispatch是异步操作
       this.$store.dispatch("updatainfo", payload)
     },
     useUpdatainfoandPromise(payload) {
       // 调用的index.js中action包含promise的方法，then写在了Appvue的实例方法内
-      // 当然then也还是可以写promise方法内的，先后顺序猜测是先执行玩promise内的
+      // 当然then也还是可以写promise方法内的，先后顺序猜测是先执行promise内的
       // 再执行dispatch这的
       this.$store.dispatch("asynchronization", payload)
       .then(res => {

@@ -74,8 +74,9 @@ const store = new Vuex.Store({
   // 三、异步的method，但还是要调用mutations处理state
   // 异步操作要写在action中，但不能直接使用action更改state，还是要通过mutation(官方图19-03)
   actions: {
-    // context上下文，action传入的参数，store对象
+    // context上下文有点像self，action传入的参数，store对象
     // action异步的处理步骤2.action使用commit调用mutation方法
+    // 一般如判断操作如if else，等异步操作放在action里面
     updateinfoAction(context, payload) {
       setTimeout(() => {
         // 在store内引用mutation也是commit方法，只需记住mutation是最终的state修改方法
