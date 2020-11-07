@@ -18,12 +18,12 @@ export const $_backTop = {
 }
 
 /* 2.组件中注册混入 */
-import { $_backTop } from "./config"
+import {$_backTop} from "./config"
 const vm = new Vue({
 	created: function () {console.log(2)},
 	mixins: [$_backTop]
 	// 方法已经混入按常规调用
 })
 
-/* 结果：输入1,2两个组件合并当不覆盖 */
+/* 结果：输入1,2两个组件合并但不覆盖 */
 </script>>
