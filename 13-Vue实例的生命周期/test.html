@@ -31,6 +31,7 @@
             beforeCreate:function(){
                 console.log("调用了beforeCreate钩子函数");
             },
+            /* mounted是在模板渲染后初始化，created是在渲染前即应用实例挂载在模板之前 */
             created:function () {
                 console.log("调用了created钩子函数");
             },
@@ -43,6 +44,8 @@
             beforeUpdate: function () {
                 console.log("调用了beforeUpdate钩子函数")
             },
+            // 光改变data但不渲染页面是不会执行updated
+            // 与mounted，watched不同的是，updated只在数据变化和模板渲染完毕的同时执行操作
             updated: function () {
                 console.log("调用了updated钩子函数");
             },

@@ -1,10 +1,11 @@
 <script type="text/javascript">
 /* bus是组件之间数据流传递的方法，通常用于小项目之间，但实际中vuex是更适合规划话开发的方法 */
 
-// z再app.js中的全局定义
+// 安装bus
+// 另一种单个use情况：Vue.prototype.$bus = new Vue()
 var eventBus = {
 	install(Vue,options) {
-		Vue.prototype.$bus = vue
+		Vue.prototype.$bus = Vue
 	}
 };
 Vue.use(eventBus);
@@ -32,7 +33,7 @@ beforeDestroy () {
 created() {
   this.$bus.$on('firstTodo', this.firstTodo);
   this.$bus.$on('secondTodo', this.secondTodo);
-},
+},acsxxcczcz
 // 清除事件监听
 beforeDestroy () {
   this.$bus.$off('firstTodo', this.firstTodo);

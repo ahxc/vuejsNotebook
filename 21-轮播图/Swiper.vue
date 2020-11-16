@@ -131,7 +131,7 @@ export default {
       // 获取图片张数作为索引，张数为传过来的初始值
       this.slideCount = swiperitem.length;
       if (this.slideCount > 1) {
-        // cloneNode节点克隆方法，传参true则拷贝当前节点外还拷贝其子孙节点
+        // cloneNode节点克隆方法，传参true则拷贝当前节点外还拷贝其子孙节点，类似深拷贝
         // 获取第一张和最后一张image
         let cloneFirst = swiperitem[0].cloneNode(true);
         let cloneLast = swiperitem[this.slideCount-1].cloneNode(true);

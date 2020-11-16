@@ -1,14 +1,14 @@
 import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
+
+
+//main.js中导入toast插件的安装js并使用
 import toast from 'components/common/toast'
-
-
-// 1.弹窗toast
-// main.js中使用
 Vue.use(toast)
+
 // 导入组件
 import Toast from './Toast'
-// 脚本中定义
+// 插件的写法
 const plugin = {}
 plugin.install = function (Vue) {
   const toastConstrustor = Vue.extend(Toast)
@@ -17,7 +17,7 @@ plugin.install = function (Vue) {
   toast.$mount(document.createElement('div'))
   // toast.$el对应的就是div
   document.body.appendChild(toast.$el)
-  // 给组件注册原型属性后续直接调用该组件
+  // 给组件定义原型属性
   Vue.prototype.$toast = toast
 }
 // 后续调用toast内的show方法并传入数据

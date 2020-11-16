@@ -52,7 +52,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             // presets: ['@babel/preset-env']
-            presets: ['es2015']
+            presets: ['es2015']//插件只允许 Babel 解析（parse） 特定类型的语法（而不是转换）。
           }
         }
       },

@@ -17,21 +17,23 @@
   <script>
 
     // 3.没有块级作用域引起的问题:for块级
-    // var btns = document.getElementsByTagName("button")
-    // for (var i = 0; i < btns.length; i++) {
-    //   btns[i].addEventListener('click',function (param) {
-    //   console.log("第"+i+"个按钮被点击了");
-    //   })
-    // }
+    var btns = document.getElementsByTagName("button")
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click',function (param) {
+      console.log("第"+i+"个按钮被点击了");
+      })
+    }
     // 使用闭包，即函数封装，函数有作用域
-    // for (let i = 0; i < btns.length; i++) {
-    //   (function (i) {
-    //     btns[i].addEventListener('click',function (param) {
-    //       console.log("第"+i+"个按钮被点击了");
-    //     })
-    //   })(i)
-    // }
-    // ES6使用let/const
+    /* 闭包：定义在函数内部的函数(func)(参数)
+    也可以称作立即执行函数 */
+    for (let i = 0; i < btns.length; i++) {
+      (function (i) {
+        btns[i].addEventListener('click',function (param) {
+          console.log("第"+i+"个按钮被点击了");
+        })
+      })(i)
+    }
+    // ES6使用let/const解决了这个问题不需要闭包，但闭包还是有一些地方有用
     const btns = document.getElementsByTagName("button")
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener('click',function (param) {
