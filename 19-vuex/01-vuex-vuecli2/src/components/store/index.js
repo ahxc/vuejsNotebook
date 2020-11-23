@@ -123,13 +123,13 @@ const store = new Vuex.Store({
 // 3.导出store使用
 export default store
 
-/* 对象的结构 */
+/* 对象的解构 */
 const onj = {
   name: "xyz",
   age: 18,
   height: 1.80
 }
 
-// 将对象结构为多种方法名，list也可以结构，但相对解构list下标和遍历更常用合理
+// 将对象结构为多种方法名，list也可以解构，但相对解构list下标和遍历更常用合理
 const {name, age, height} = obj
 // const {...} = context

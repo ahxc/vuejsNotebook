@@ -2,6 +2,7 @@
 /* 如商品信息 */
 /* 类似python类的init */
 
+/* java类又称class继承 */
 export class Goods {
   /* dataresult的字段 */
   constructor(itemInfo, columns, services) {
@@ -15,7 +16,7 @@ export class Goods {
     this.nowPrice = itemInfo.highNowPrice;
   }
 }
-// 失利化
+// 实例化
 const item = new Goods('...')
 
 
@@ -36,7 +37,7 @@ const item = createPerson('...')
 export function Person(name, age, gender){
   this.name = name;
   this.age = age;
-  this.gender = gender
+  this.gender = gender;
 }
 
 const per = new Person('...')

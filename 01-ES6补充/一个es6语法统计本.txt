@@ -2,4 +2,8 @@
 2，let，const
 3，字面量的增强写法，即对象属性名的省略
 4，箭头函数的使用
-5，for语句的增强写法
+5，for语句的增强写法：for(let i of x) {}
+6，箭头函数this的使用
+7，map和set
+8，generator
+9，解构赋值
