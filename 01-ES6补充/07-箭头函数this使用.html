@@ -26,9 +26,10 @@
           })
         })
         this
-        setTimeout(() => { // 第四个指向了这一层，这一层指向aaa，aaa的作用域在obj
+        setTimeout(() => { 
+        // 第四个指向了这一层，这一层指向aaa，aaa的作用域在obj
           setTimeout(function () {
-            console.log(this) // window
+            console.log(this) // window setTimeOut得对象是window
           })
           this
           setTimeout(() => {
