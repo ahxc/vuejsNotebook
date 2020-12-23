@@ -83,7 +83,7 @@ module.exports = {
     // 自动生成一个index.htm文件并引用bundle.js包，可以指定模板
     // 将打包的js文件自动通过script标签插入body中
     new htmlWbepackPlugin({
-      // 指定webpack目录下的index.html作为模板
+      // 指定index.html作为模板，打包时会把所有link和静态文件插入打包
       template: './index.html'
     }),
     // 项目js代码统一打包到bundle.js后，开发时不建议

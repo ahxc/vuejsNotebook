@@ -1,8 +1,7 @@
-/* 数据构造器，当请求的单例数据过于庞杂，通过数据构造器整合单个组件的数据 */
-/* 如商品信息 */
-/* 类似python类的init */
-
-/* java类又称class继承 */
+/* 构造器
+constructor()方法是类的构造函数，用于传递参数，返回实例对象，
+通过new命令生成对象实例时，自动调用该方法，没有显示定义的话，
+会自动创建一个constructor() */
 export class Goods {
   /* dataresult的字段 */
   constructor(itemInfo, columns, services) {
@@ -19,6 +18,28 @@ export class Goods {
 // 实例化
 const item = new Goods('...')
 
+// 继承
+class Father {
+  constructor(x, y) {
+        this.x = x;
+        this.y = y;
+  }
+    sum(){
+        consolo.log(this.x+this.y);
+    }
+}
+const zx = new Star();
+class Son extends Father{
+    constructor(x, y){
+        super(x, y);/* 使用super后可以调用父类的构造函数 */
+    }
+    /* 覆写父类方法 */
+    sum() {
+        super.sum();
+  }
+}
+var son = new Son(1, 2);/* 父类无法获取1，2 */
+son.sum()/* 调用子类sum方法，如果没有查找父类有没有sum方法 */
 
 /* 第二种函数构建对象方式
 弊端，分不清类型，用的不多 */

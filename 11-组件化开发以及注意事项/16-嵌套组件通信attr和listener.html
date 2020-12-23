@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+
+<body>
+  <div id="app"  @click="btnClick" @mouseover.native="say">
+    <cpn :message1="message1"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div><!-- 如果是孙子组件获取祖先组件的信息，则定义如下语句 -->
+      <cpn2 v-bind="$attrs" v-on="$listeners"/>
+    </div>
+  </template>
+
+  <template id="cpn2">
+    <div></div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+  <!-- 注意，这里需要注意我们使用了非 Props 特性，Vue 中组件如果接受非 Props 属性的时候，
+  会把属性渲染到 HTML 的原生标签上（模板标签最外层）。 -->
+  <cpn :message1="message1"></cpn>
+  <!-- 渲染结果 -->
+  <div class="cpn" name="六哥" tag="帅"></div>
+  <!-- 可以通过在模板中加入inheritAttrs: false, -->
+
+  <script>
+    // 子组件
+    const cpn = {
+      template: "#cpn",
+      inheritAttrs: false,/* 防止生成属性标签 */
+      props: {
+        message1: String,
+      },
+      methods: {
+        btnClick(){
+          // 不需要任何的定义，子组件就可以通过attr和listener来获取父组件信息。
+          // $attr主要获父组件非props传递过来的数据。
+          // {message2:"我是父组件消息2"}
+          console.log(this.$attr, this.$listeners);
+          // 包含了父作用域中的 (不含 .native 修饰器的) v-on事件监听器。
+          // {click: f}
+          console.log(this.$listeners)
+        }
+      },
+    };
+    // 孙子组件
+    const cpn2 = {
+      template: "#cpn2"
+    },
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message1:"我是父组件消息1",
+          message2:"我是父组件消息2"
+        }
+      },
+      methods: {
+      },
+      components: {
+        cpn
+      },
+    })
+
+    
+  </script>
+</body>
+
+</html>

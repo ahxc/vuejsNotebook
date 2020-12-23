@@ -19,6 +19,9 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
+    /* 在一个小项目中，前端还在加载vue.js，来不及渲染vue则会显示源码，v-cloak就是解决这个问题
+    它只会使页面闪烁，但不会显示源码，在通过挂载的项目中则不用担心这个问题
+    因为，index页面中的div是个空壳 */
     //在vue解析前，div中有一个属性cloak
     //在vue解析之后，div中没有一个属性v-cloak
     setTimeout(() => {

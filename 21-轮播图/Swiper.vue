@@ -80,7 +80,7 @@ export default {
     scrollContent: function (moveDistance) {
       // 设置正在滚动
       this.scrolling = true;
-      // 设置transition样式滚动花费时间，不加transform则所有样式操作为 animDuration ms
+      // 设置transform样式滚动花费时间。
       this.swiperStyle.transition = 'transform '+this.animDuration+'ms';
       // 开始滚动动画
       this.setTransform(moveDistance);

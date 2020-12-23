@@ -36,6 +36,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
+              // url-loader封装了file-loader。url-loader不依赖于file-loader，即使用url-loader时，只需要安装url-loader即可，不需要安装file-loader，因为url-loader内置了file-loader。
               // 图片小于该限制将图片转成base64字符串，不需要额外模块加载，大于该限制需要使用file-loader
               limit: 8192,// 配置8kb的比较多
               // 打包文件路径，hash防重复
