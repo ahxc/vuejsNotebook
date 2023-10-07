@@ -1,11 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
-const htmlWbepackPlugin = require('html-webpack-plugin')
-const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const htmlWbepackPlugin = require('html-webpack-plugin');
+const uglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
-  output:{
+  output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     // publicPath: 'dist/'
@@ -62,10 +62,10 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$':'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js'
     }
   },
-  plugins:[
+  plugins: [
     new webpack.BannerPlugin('最终解释权归zz所有'),
     new htmlWbepackPlugin({
       template: 'index.html'
@@ -80,5 +80,4 @@ module.exports = {
     // 页面实时刷新监听
     inline: true
   }
-
-}
+};

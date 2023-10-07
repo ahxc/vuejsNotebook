@@ -54,7 +54,7 @@ const的值不可修改。
 
 ### 剩余参数和扩展运算符
 
-`...args`表示接收所有的剩余形参，...表示展开一个对象或数组。
+`...args`表示接收所有的剩余形参，...表示展开一个对象或数组。对象只能是解构赋值，而数组可以展开去除最外层。
 
 ```javascript
 let [z1, ...z2] = [1,2,3,4], x = [1,2,3,4];
@@ -107,6 +107,33 @@ javascript笔记33章节。
 
 `for(let i of x) {}`
 
+```javascript
+for (x in obj){}// 便利对象属性名
+```
+
+
+
 2.字面量
 
-即把字面量省略，变量在对象外部声明，在内部直接调用变量。
+a.把字面量省略，变量在对象外部声明，在内部直接调用变量。
+
+b.`const b = {__proto__:obj}`：原型的对象构建方式。
+
+### 对象合并
+
+```javascript
+Object.assign(obj1, obj2, obj3)
+```
+
+### 修饰符decorator
+
+```javascript
+function d (params) {
+	params.newthis = true
+}
+
+@d
+class Obj {}
+console.log(Obj.newthis)//true
+```
+

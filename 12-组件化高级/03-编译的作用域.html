@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>编译的作用域</title>
 </head>
 
@@ -12,6 +19,7 @@
   <div id="app">
     <!-- isShow作用域为父组件app的isShow，出现在对应app的子组件方法作用域都在对应app里
     而不是在子组件cpn中，至于发生的子传父，父传子是因为方法写在了子组件里 -->
+
     <!-- 官方准则：父组件模板的所有东西都会在父级作用域内编译，
       同理子组件只会在子集作用域，因此下面这个组件会显示，出现的元素都会去对应的应用内查找 -->
     <cpn v-show="isShow"></cpn>
@@ -23,7 +31,7 @@
       <h2>我是子组件</h2>
       <!-- 组件作用域，使用的子组件的作用域 -->
       <!-- 属于子组件，根据isShow不会显示 -->
-      <button v-show="isShow"></button>
+      <button v-show="isShow">子组件按钮</button>
     </div>
   </template>
 
@@ -34,17 +42,18 @@
       template: "#cpn",
       data() {
         return {
-          isShow: false
-        }
+          isShow: true
+        };
       },
-    }
+    };
+
     const app = new Vue({
       el: "#app",
       data() {
         return {
           message: "我是父组件消息",
-          isShow:true
-        }
+          isShow: false
+        };
       },
       components: {
         cpn

@@ -17,6 +17,18 @@ export class Goods {
 }
 // 实例化
 const item = new Goods('...')
+/* 类的继承 */
+class Items extends Goods {
+	constructor() {
+		super()//继承父属性，如果需要指定继承的属性，和构造器一同写入属性名即可。
+	}
+	con() {
+		console.log(this.title)
+	}
+}
+// 实例化
+const G = new Goods('newtitle')
+G.con// newtitle
 
 // 继承
 class Father {

@@ -1,39 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>v-model结合select类型</title>
 </head>
+
 <body>
   <div id="app">
     <!-- select单选 -->
-    <select name="fruit" v-model="fruit">
-      <option value="苹果">苹果</option>
+    <select
+      name="fruit"
+      v-model="fruit"
+    >
+      <option
+        v-for="item in fruitsList"
+        :value="item"
+        :key="item"
+      >
+        {{item}}
+      </option>
+      <!-- <option value="苹果">苹果</option>
       <option value="香蕉">香蕉</option>
-      <option value="西瓜">西瓜</option>
+      <option value="西瓜">西瓜</option> -->
     </select>
     <h2>你选择的水果是：{{fruit}}</h2>
 
     <!-- select多选 -->
-    <select name="fruits" v-model="fruits" multiple>
-      <option value="苹果">苹果</option>
-      <option value="香蕉">香蕉</option>
-      <option value="西瓜">西瓜</option>
+    <select
+      name="fruits"
+      v-model="fruits"
+      multiple
+    >
+      <option
+        v-for="item in fruitsList"
+        :value="item"
+        :key="item"
+      >
+        {{item}}
+      </option>
     </select>
-    <h2>你选择的水果是：{{fruits}}</h2>
+    <h2>
+      你选择的水果是：{{fruits}}
+    </h2>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
-      el:"#app",
-      data:{
-        fruit:"苹果",
-        fruits:[]
+      el: "#app",
+      data: {
+        fruit: "苹果",
+        fruits: [],
+        fruitsList: ['苹果', '香蕉', '西瓜'],
       },
-
     })
   </script>
 </body>
+
 </html>

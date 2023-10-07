@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  />
   <title>v-on的参数传递</title>
 </head>
+
 <body>
   <div id="app">
     <!-- 事件没传参 -->
@@ -15,25 +23,27 @@
     <button @click="btnClick2(123)">按钮3</button>
     <button @click="btnClick2()">按钮4</button>
     <button @click="btnClick2">按钮5</button>
+    <!-- 括号无影响，不加括号默认第一个参数为event，加了需要手动设置参数$event -->
     <!-- 事件调用时候需要传入event还需要传入其他参数 -->
-    <button @click="btnClick3($event,123)">按钮6</button>
+    <button @click="btnClick3($event, 123)">按钮6</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
-      el:"#app",
-      methods:{
-        btnClick(){
+      el: "#app",
+      methods: {
+        btnClick() {
           console.log("点击XXX");
         },
-        btnClick2(value){
-          console.log(value+"----------");
+        btnClick2(value) {
+          console.log(value + "----------");
         },
-        btnClick3(event,value){
-          console.log(event+"----------"+value);
-        }
-      }
-    })
+        btnClick3(event, value) {
+          console.log(event + "----------" + value);
+        },
+      },
+    });
   </script>
 </body>
+
 </html>

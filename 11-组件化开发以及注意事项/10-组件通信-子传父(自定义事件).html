@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>组件通信-子传父(自定义事件)</title>
 </head>
 
@@ -18,7 +24,13 @@
   <template id="cpn">
     <div>
       <!-- 1.子传父通常就是子组件里发生了事件，比如点击，文本框 -->
-      <button v-for="(item, index) in categoties" :key="index" @click="btnClick(item)">{{item.name}}</button>
+      <button
+        v-for="(item, index) in categoties"
+        :key="index"
+        @click="btnClick(item)"
+      >
+        {{item.name}}
+      </button>
     </div>
   </template>
 
@@ -48,12 +60,12 @@
               name: '电脑办公'
             },
           ]
-        }
+        };
       },
       methods: {
         btnClick(item) {
           // 2.emit发行，将子组件的事件和点击的item包装成itemclick发射，
-          this.$emit('itemclick', item)
+          this.$emit('itemclick', item);
         }
       },
     };
@@ -62,11 +74,11 @@
       el: "#app",
       data() {
         return {
-        }
+        };
       },
       methods: {
         cpnClcik(item) {
-          console.log('cpnClick'+item.name);
+          console.log('cpnClick' + item.name);
         }
       },
       components: {

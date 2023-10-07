@@ -1,8 +1,8 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   entry: './src/main.js',
-  output:{
+  output: {
     // 打包目的文件夹根目录
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -17,16 +17,16 @@ module.exports = {
         // css-loader只负责css文件加载，不负责解析渲染，要解析需要使用style-loader
         // loader加载顺序从右至左
         use: [
-          {loader: 'style-loader'}, {loader: 'css-loader'}
+          { loader: 'style-loader' }, { loader: 'css-loader' }
         ]
       },
       {
         // 匹配less文件，less需要的loader
         test: /\.less$/,
         use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'},
-          {loader: 'less-loader'}
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'less-loader' }
         ]
       },
       {
@@ -57,10 +57,10 @@ module.exports = {
             //如果要使用@babel/preset-env这里需要在根目录新建一个babel的文件
             // presets: ['@babel/preset-env']
             // babel：js编译互转工具，不需要等待浏览器兼容一门新语言
-            presets: ['es2015']// es 6
+            presets: ['es2015']// es6
           }
         }
       }
     ]
   }
-}
+};

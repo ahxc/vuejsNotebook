@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>v-for使用key</title>
 </head>
+
 <body>
   <div id="app">
     <!-- 不加key如果要插入f依次改变 -->
@@ -14,27 +22,38 @@
     </ul>
     <button @click="add1">没有key</button>
     <!-- 加key如果要插入f使用diff算法高效,如果使用index做key一直变，所以item如果唯一可以使用item-->
+    <!-- 无论加不加，渲染时都是上一个f开始后插入渲染，即索引开始位置2,3,4,5。数组应该是老位置插入，但渲染时前面没有渲染。
+      区别是不加插入的f后面都会重新渲染，而加的只渲染插入的f -->
     <ul>
-        <li v-for="item in letters" :key="item">{{item}}</li>
+      <li
+        v-for="item in letters"
+        :key="item"
+      >
+        {{item}}
+      </li>
     </ul>
     <button @click="add2">有key</button>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
-      el:"#app",
-      data:{
-        letters:['a','b','c','d','e']
+      el: "#app",
+      data: {
+        letters: ['a', 'b', 'c', 'd', 'e']
       },
       methods: {
-        add1(){
-          this.letters.splice(2,0,'f')
+        add1() {
+          this.letters.splice(2, 0, 'f');
+          console.log(this.letters);
         },
-        add2(){
-          this.letters.splice(2,0,'f')
+        add2() {
+          this.letters.splice(2, 0, 'f');
+          console.log(this.letters);
         }
       }
     })
   </script>
 </body>
+
 </html>

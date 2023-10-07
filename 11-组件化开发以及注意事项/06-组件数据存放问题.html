@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>组件数据存放问题</title>
 </head>
 
@@ -19,12 +25,12 @@
     const app = new Vue({
       el: "#app",
       components: { //局部组件创建
-        cpn1:{
-          template:'<div>{{msg}}</div>',
-          data(){
+        cpn1: {
+          template: '<div>{{msg}}</div>',
+          data() {
             return {
               msg: "组件的data数据存放必须要是一个函数"
-            }
+            };
           }
         }
       }

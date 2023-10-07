@@ -1,13 +1,13 @@
-//CommonJS需要nodeJS支持
-var name = '小明'
-var age = 22
+// CommonJS需要nodeJS支持
+var name = '小明';
+var age = 22;
 
 function sum(num1, num2) {
-  return num1 + num2
+  return num1 + num2;
 }
-var flag = true
+var flag = true;
 if (flag) {
-  console.log(sum(10, 20))
+  console.log(sum(10, 20));
 }
 
 // module.exports = {
@@ -18,4 +18,4 @@ if (flag) {
 module.exports = {
   flag,
   sum
-}
+};

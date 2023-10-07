@@ -6,22 +6,22 @@ export const $_backTop = {
   data: function () {
     return {
       showBackTop: false
-    }
+    };
   },
-  created: function () {console.log(1)},
+  created: function () { console.log(1); },
   methods: {
     backTop: function () {
       this.$refs.scroll.scrollTo(0, 0, 300);
     }
   }
-}
+};
 
 /* 2.组件中注册混入 */
-import {$_backTop} from "./config"
+import { $_backTop } from "./config";
 const vm = new Vue({
-	created: function () {console.log(2)},
-	mixins: [$_backTop]
-	// 方法已经混入按常规调用
+  created: function () { console.log(2); },
+  mixins: [$_backTop]
+  // 方法已经混入按常规调用
 })
 
 /* 结果：输入1,2两个组件合并但不覆盖 */

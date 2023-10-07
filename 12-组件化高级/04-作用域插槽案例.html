@@ -2,9 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  />
   <title>作用域插槽案例</title>
 </head>
 
@@ -15,13 +21,16 @@
     <!-- 获取子组件数据，结合具名插槽 -->
     <cpn>
       <!-- 2.5以下必须使用template -->
-      <!-- slot对应具名插槽，slot-scope和得值只是调用子组件插槽数据的方法名，可以重名 -->
+      <!-- slot对应具名插槽，slot-scope是父组件拿去子组件插槽数据的对象名，可以重名 -->
       <!-- 注意，只能调用对应的具名插槽的数据，旧写法 -->
-      <template slot="slot1" slot-scope="slot1props">
+      <template
+        slot="slot1"
+        slot-scope="slot1props"
+      >
         <!-- <span v-for="(item, index) in slot.data" :key="index">{{item}}-</span> -->
         <span>{{slot1props.data1.join('-')}}</span>
       </template>
-      <!-- 2.6新写法v-slot -->
+      <!-- 2.6新写法v-slot合并插槽取对象的数据名 -->
       <!-- 2.具名插槽的子传父，父组件绑定插槽并给插槽命名 -->
       <template v-slot:slot2="slot2props">
         <!-- <span v-for="(item, index) in slot.data" :key="index">{{item}}-</span> -->
@@ -30,21 +39,36 @@
     </cpn>
   </div>
 
-
   <template id="cpn">
     <div>
       <!-- 1.具名插槽的子传父，插槽绑定子数据 -->
-      <slot name="slot1" :data1="pLanguage">
+      <slot
+        name="slot1"
+        :data1="pLanguage"
+      >
         <!-- 默认数据 -->
         <ul>
-          <li v-for="(item, index) in pLanguage" :key="index">{{item}}</li>
+          <li
+            v-for="(item, index) in pLanguage"
+            :key="index"
+          >
+            {{item}}
+          </li>
         </ul>
       </slot>
-      <slot name="slot2" :data2="mLanguage">
+      <slot
+        name="slot2"
+        :data2="mLanguage"
+      >
         <ul>
-          <li v-for="(item, index) in mLanguage" :key="index">{{item}}</li>
+          <li
+            v-for="(item, index) in mLanguage"
+            :key="index"
+          >
+            {{item}}
+          </li>
         </ul>
-    </slot>
+      </slot>
     </div>
   </template>
 
@@ -55,23 +79,23 @@
       template: "#cpn",
       data() {
         return {
-          isShwo:false,
-          pLanguage:['JavaScript','Java','C++','C'],
-          mLanguage:['python','go','C#','R']
-        }
+          isShwo: false,
+          pLanguage: ["JavaScript", "Java", "C++", "C"],
+          mLanguage: ["python", "go", "C#", "R"],
+        };
       },
-    }
+    };
     const app = new Vue({
       el: "#app",
       data() {
         return {
-          isShow:true
-        }
+          isShow: true,
+        };
       },
       components: {
-        cpn
+        cpn,
       },
-    })
+    });
   </script>
 </body>
 

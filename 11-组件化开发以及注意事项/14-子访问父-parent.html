@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>子访问父-parent</title>
 </head>
 
@@ -12,8 +18,6 @@
   <!-- 子访问父用的更少且不建议 -->
   <!-- 父组件 -->
   <div id="app">
-    <cpn></cpn>
-    <cpn></cpn>
     <cpn ref="aaa"></cpn>
   </div>
 
@@ -22,7 +26,7 @@
     <div>
       子组件消息：{{message}}
       <!-- 1.事件开始，访问子组件方法 -->
-      <button @click="btnClick" >子组件按钮</button>
+      <button @click="btnClick">子组件按钮</button>
     </div>
   </template>
 
@@ -33,17 +37,17 @@
       template: "#cpn",
       data() {
         return {
-          message:"我是子组件的name"
-        }
+          message: "我是子组件的name"
+        };
       },
       methods: {
-        btnClick(){
-          console.log("子组件按钮被点击")
+        btnClick() {
+          console.log("子组件按钮被点击");
           // 2.访问父组件的方法1.this.$parent
-          this.message = this.$parent.message
-          // 2.访问父或更高的根组件方法2.this.$root
-          console.log(this.$root)
-          console.log(this.$root.message)
+          this.message = this.$parent.message;
+          // 2.访问父或更高的根组件方法2.this.$root，这里打印访问到了id=app这一层
+          console.log('this.$parent', this.$parent);
+          console.log('this.$root', this.$root);
         }
       },
     };
@@ -51,8 +55,8 @@
       el: "#app",
       data() {
         return {
-          message:"我是父组件消息"
-        }
+          message: "我是父组件消息"
+        };
       },
       methods: {
       },

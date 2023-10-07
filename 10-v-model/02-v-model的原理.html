@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  />
   <title>v-model的原理</title>
 </head>
+
 <body>
   <div id="app">
     <!-- v-model实质就是v-on和v-bind的语法糖 -->
@@ -15,28 +23,29 @@
     <!-- 实现双向绑定 @input监听输入框事件  -->
     <!-- <input type="text" :value="message" @input="valueChange" > -->
     <!-- $event获取事件对象，$event.target.value获取input值 -->
-    <input type="text" :value="message" @input="valueChange($event.target.value)">
+    <input
+      type="text"
+      :value="message"
+      @input="valueChange($event.target.value)"
+    />
 
     {{message}}
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
-      el:"#app",
-      data:{
-        message:"zzz"
+      el: "#app",
+      data: {
+        message: "zzz",
       },
-      methods:{
-        // valueChange(event){
-        //   console.log("input值改变了");
-        //   this.message = event.target.value
-        // },
-        valueChange(value){
+      methods: {
+        valueChange(value) {
           console.log("input值改变了");
-          this.message = value
-        }
-      }
-    })
+          this.message = value;
+        },
+      },
+    });
   </script>
 </body>
+
 </html>

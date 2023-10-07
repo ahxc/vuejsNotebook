@@ -1,42 +1,46 @@
 <script type="text/javascript">
-/* bus是组件之间数据流传递的方法，通常用于小项目之间，但实际中vuex是更适合规划开发的方法 */
+  /*
+   bus是组件之间数据流传递的方法，通常用于小项目之间，但实际中vuex是更适合规划开发的方法
+   bus是组件之间的emit/on通信方法。组件卸载前还需off 销毁。
+   */
 
-// 安装bus
-// 另一种单个use情况：Vue.prototype.$bus = new Vue()
-var eventBus = {
-	install(Vue, options) {
-		Vue.prototype.$bus = Vue
-	}
-};
-Vue.use(eventBus);
+  // 安装bus
+  // 另一种单个use情况：Vue.prototype.$bus = new Vue()
+  var eventBus = {
+    install(Vue, options) {
+      Vue.prototype.$bus = Vue;
+    }
+  };
 
-// A组件中使用发射
-methods: {
-  todo: function () {
-    this.$bus.$emit('todoSth', params);
+  Vue.use(eventBus);
+
+  // A组件中使用发射
+  methods: {
+    todo: function () {
+      this.$bus.$emit('todoSth', params);
+    }
   }
-}
 
-// B组件中的监听
-created() {
-  this.$bus.$on('todoSth', (params) => {  //获取传递的参数并进行操作
-  })
-},
-// 最好在组件销毁前
-// 清除事件监听
-beforeDestroy () {
-  this.$bus.$off('todoSth');
-}
+  // B组件中的监听
+  created() {
+    this.$bus.$on('todoSth', (params) => {  //获取传递的参数并进行操作
+    });
+  },
+  // 最好在组件销毁前
+  // 清除事件监听
+  beforeDestroy() {
+    this.$bus.$off('todoSth');
+  }
 
-// 多组件
-// ...
-created() {
-  this.$bus.$on('firstTodo', this.firstTodo);
-  this.$bus.$on('secondTodo', this.secondTodo);
-},
-// 清除事件监听
-beforeDestroy () {
-  this.$bus.$off('firstTodo', this.firstTodo);
-  this.$bus.$off('secondTodo', this.secondTodo);
-}
+  // 多组件
+  // ...
+  created() {
+    this.$bus.$on('firstTodo', this.firstTodo);
+    this.$bus.$on('secondTodo', this.secondTodo);
+  },
+  // 清除事件监听
+  beforeDestroy() {
+    this.$bus.$off('firstTodo', this.firstTodo);
+    this.$bus.$off('secondTodo', this.secondTodo);
+  }
 </script>>

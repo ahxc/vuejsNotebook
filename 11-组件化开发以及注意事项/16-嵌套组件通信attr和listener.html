@@ -3,75 +3,109 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title></title>
 </head>
+<!-- 
+$attrs：子组件接收所有未被props注册过的属性。一些class，style除外。id会传递。
+$listeners：子组件接收父组件定义的所有没有.native修饰符的方法。
+ -->
 
 <body>
-  <div id="app"  @click="btnClick" @mouseover.native="say">
-    <cpn :message1="message1"></cpn>
+  <div
+    id="app"
+    @mouseover.native="say"
+  >
+    <button>父组件</button>
+    <!-- 如果想在父级组件层级给子组件绑定事件，直接绑定不会生效，
+      但$listeners还是会接受，需要添加.native修饰符 @mouseover.native，
+      事件就会在子组件上上生效，但不会加入$listeners传递 -->
+    <cpn
+      id="1"
+      class="1"
+      :style="1"
+      :message="1"
+      name="ahxc"
+      @mouseover="mouseOver"
+    ></cpn>
   </div>
 
   <template id="cpn">
-    <div><!-- 如果是孙子组件获取祖先组件的信息，则定义如下语句 -->
-      <cpn2 v-bind="$attrs" v-on="$listeners"/>
+    <div>
+      <button @click="cpnClick">
+        子组件
+      </button>
+      <!-- 如果要继续传递给孙子组件。则定义如下语句 -->
+      <cpn2
+        v-bind="this.$attrs"
+        v-on="this.$listeners"
+      ></cpn2>
     </div>
   </template>
 
   <template id="cpn2">
-    <div></div>
+    <button @click="cpn2Click">
+      孙子组件
+    </button>
   </template>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 
-  <!-- 注意，这里需要注意我们使用了非 Props 特性，Vue 中组件如果接受非 Props 属性的时候，
-  会把属性渲染到 HTML 的原生标签上（模板标签最外层）。 -->
-  <cpn :message1="message1"></cpn>
-  <!-- 渲染结果 -->
-  <div class="cpn" name="六哥" tag="帅"></div>
   <!-- 可以通过在模板中加入inheritAttrs: false, -->
 
   <script>
+    // 孙子组件
+    const cpn2 = {
+      template: "#cpn2",
+      methods: {
+        cpn2Click() {
+          /* 祖先组件的信息 */
+          console.log(this.$attrs, this.$listeners);
+        }
+      }
+    };
+
     // 子组件
     const cpn = {
       template: "#cpn",
       inheritAttrs: false,/* 防止生成属性标签 */
+      components: {
+        cpn2,
+      },
       props: {
-        message1: String,
       },
       methods: {
-        btnClick(){
-          // 不需要任何的定义，子组件就可以通过attr和listener来获取父组件信息。
-          // $attr主要获父组件非props传递过来的数据。
-          // {message2:"我是父组件消息2"}
-          console.log(this.$attr, this.$listeners);
-          // 包含了父作用域中的 (不含 .native 修饰器的) v-on事件监听器。
-          // {click: f}
-          console.log(this.$listeners)
+        cpnClick() {
+          console.log(this.$attrs, this.$listeners);
+          this.$listeners.mouseover(event);
         }
       },
     };
-    // 孙子组件
-    const cpn2 = {
-      template: "#cpn2"
-    },
+
+    // 父组件
     const app = new Vue({
       el: "#app",
       data() {
         return {
-          message1:"我是父组件消息1",
-          message2:"我是父组件消息2"
-        }
-      },
-      methods: {
+        };
       },
       components: {
-        cpn
+        cpn,
+      },
+      methods: {
+        mouseOver(event) {
+          event.stopPropagation();
+          console.log('我是父组件app绑定到子组件cpn的方法，孙子组件受到了冒泡影响');
+        },
       },
     })
-
-    
   </script>
 </body>
 

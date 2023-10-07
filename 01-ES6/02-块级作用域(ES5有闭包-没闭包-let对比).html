@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>块级作用域(ES5有闭包-没闭包-let对比)</title>
 </head>
+
 <body>
 
   <button>按钮1</button>
@@ -15,33 +23,33 @@
   <button>按钮5</button>
 
   <script>
-
     // 3.没有块级作用域引起的问题:for块级
-    var btns = document.getElementsByTagName("button")
+    var btns = document.getElementsByTagName("button");
     for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click',function (param) {
-      console.log("第"+i+"个按钮被点击了");
-      })
+      btns[i].addEventListener('click', function (param) {
+        console.log("第" + i + "个按钮被点击了");
+      });
     }
     // 使用闭包，即函数封装，函数有作用域
     /* 闭包：定义在函数内部的函数(func)(参数)
     也可以称作立即执行函数 */
     for (let i = 0; i < btns.length; i++) {
       (function (i) {
-        btns[i].addEventListener('click',function (param) {
-          console.log("第"+i+"个按钮被点击了");
-        })
-      })(i)
+        btns[i].addEventListener('click', function (param) {
+          console.log("第" + i + "个按钮被点击了");
+        });
+      })(i);
     }
     // ES6使用let/const解决了这个问题不需要闭包，但闭包还是有一些地方有用
-    const btns = document.getElementsByTagName("button")
+    const btns = document.getElementsByTagName("button");
     for (let i = 0; i < btns.length; i++) {
-      btns[i].addEventListener('click',function (param) {
-        console.log("第"+i+"个按钮被点击了");
-      })
+      btns[i].addEventListener('click', function (param) {
+        console.log("第" + i + "个按钮被点击了");
+      });
     }
 
 
   </script>
 </body>
+
 </html>
