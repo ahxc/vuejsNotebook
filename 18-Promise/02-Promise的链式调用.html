@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
   <title>02-Promise的链式调用</title>
 </head>
+
 <body>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     //  简写使用Promise.resolve
     new Promise((resolve, reject) => {
       setTimeout((data) => {
-        data = "hello"
-        resolve(data)
+        data = "hello";
+        resolve(data);
         // resolve后的语句还是会执行，但resolve递交的结果与他后面的语句无关，因此text不会出现在后面的流程中
         // 换句话说，then只接收上阶段resolve内的结果
-        console.log(data += " test")
-      }, 1000)
+        console.log(data += " test");
+      }, 1000);
     })
-    .then(data => {
-      console.log(data)
-      // Promise.resolve可以省略，链条还未结束则需return返回一个参数继续
-      return Promise.resolve(data + ' world')
-    })
-    .then(data => {
-      console.log(data)// 打印hello world
-      return Promise.resolve(data + ',vuejs')
-    })
-    .then(data => {console.log(data)
-    })
+      .then(data => {
+        console.log(data);
+        // Promise.resolve可以省略，链条还未结束则需return返回一个参数继续
+        return Promise.resolve(data + ' world');
+      })
+      .then(data => {
+        console.log(data);// 打印hello world
+        return data + ',vuejs';
+      })
+      .then(data => {
+        console.log(data);
+      });
 
     //  中途发生错误
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve('hello')
-      }, 1000)
+        resolve('hello');
+      }, 1000);
     })
-    .then(res => {
-      console.log(res)
-      return res + ' world'
-    })
-    .then(res => {
-      console.log(res)
-      // 发生异常
-      // return Promise.reject('error message')
-      // 抛出异常
-      throw 'error message'
-    })
-    .then(res => {
-      // 抛出异常后的then语句不会再执行而是抛给最近的catch开始新的链条
-      res += "vue.js"
-      console.log(res)
-    }).catch(error => {
-      console.log(error)
-    })
+      .then(res => {
+        console.log(res);
+        return res + ' world';
+      })
+      .then(res => {
+        console.log(res);
+        // 发生异常
+        // return Promise.reject('error message')
+        // 抛出异常
+        throw 'error message';
+      })
+      .then(res => {
+        // 抛出异常后的then语句不会再执行而是抛给最近的catch开始新的链条
+        res += "vue.js";
+        console.log(res);
+      }).catch(error => {
+        console.log(error);
+      })
   </script>
 </body>
+
 </html>

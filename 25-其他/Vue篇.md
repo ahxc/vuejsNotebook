@@ -2,9 +2,9 @@
 
  **v-if有更高的切换开销**。v-if是真正的条件渲染，因为它会确保在切换过程中事件监听器和子组件被销毁和重建。
 
-**v-show有更高的初始渲染开销**。v-show无论条件是否复合，没有进行节点的创建，只是改变了display的值，none，不显示且不占据位置。 
+**v-show有更高的初始渲染开销**。v-show无论条件是否复合，没有进行节点的创建，只是改变了display的值，none，不显示且不占据位置。
 
-**总结**：如果需要频繁切换，v-show更好，运行条件不太可能改变时，则用v-if。
+**总结**：如果需要频繁切换，v-show更好，运行条件不太可能改变时，而且希望彻底的隐藏某些组件和相关的变量避免影响，则用v-if。
 
 ### 如何让css只在当前组件生效
 
@@ -103,8 +103,6 @@ watch: {
 }
 ```
 
-
-
 ### `1provide/inject实现响应式数据更新的方法
 
 [www.jb51.net/article/172…](https://www.jb51.net/article/172018.htm)
@@ -161,8 +159,6 @@ new Vue({
   // 方法2.直接传入一个组件
 })
 ```
-
-
 
 ### 简述vue中diff算法原理
 
@@ -249,15 +245,15 @@ params方式：参数不会在vue地址栏中显示，同时params不能通过pa
 
 **1.initData**
 
-先对data是否是函数的判断，如果是函数就调用`getData`方法，不是函数就直接获取，或则空对象。然后通过遍历使用`object.defineProperty`将`_data` 都代理到 `vm` （vue实例）上；然后对data调用observe；
+先对data是否是函数的判断，如果是函数就调用 `getData`方法，不是函数就直接获取，或则空对象。然后通过遍历使用 `object.defineProperty`将 `_data` 都代理到 `vm` （vue实例）上；然后对data调用observe；
 
 **2.observe**
 
-首先会把observer实例绑定到data上面取名\_\_ob\_\_属性。在observe开始时，先会对数据类型进行一次判断，如果是数组，调用另一套针对数组的`observeArray`方法，`observeArray`主要为了更深度监听数组元素的变化，会对浏览器进行判断，如果浏览器支持隐式原型`proto`，那么直接定义一套基于原型的数组方法。如果不支持，那么就直接覆写数组方法。方法中都加入了setter中的notify
+首先会把observer实例绑定到data上面取名\_\_ob\_\_属性。在observe开始时，先会对数据类型进行一次判断，如果是数组，调用另一套针对数组的 `observeArray`方法，`observeArray`主要为了更深度监听数组元素的变化，会对浏览器进行判断，如果浏览器支持隐式原型 `proto`，那么直接定义一套基于原型的数组方法。如果不支持，那么就直接覆写数组方法。方法中都加入了setter中的notify
 
-如果不是数组，则直接调用`walk`方法，遍历每个属性执行`defineReactive`函数。
+如果不是数组，则直接调用 `walk`方法，遍历每个属性执行 `defineReactive`函数。
 
-`defineReactive`函数首先实例化一个Dep对象，然后判断对象是否已经定义过计算属性。定义过则直接通过call回调，没有则定义为any（任意类型）。然后又通过object.defineproperty定义关键的getter和setter方法。定义getter方法时一个核心函数`dep.depend()`，setter方法`dep.notify()`；
+`defineReactive`函数首先实例化一个Dep对象，然后判断对象是否已经定义过计算属性。定义过则直接通过call回调，没有则定义为any（任意类型）。然后又通过object.defineproperty定义关键的getter和setter方法。定义getter方法时一个核心函数 `dep.depend()`，setter方法 `dep.notify()`；
 
 **3.Dep**
 

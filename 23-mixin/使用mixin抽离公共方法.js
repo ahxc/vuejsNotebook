@@ -21,7 +21,7 @@ import { $_backTop } from "./config";
 const vm = new Vue({
   created: function () { console.log(2); },
   mixins: [$_backTop]
-  // 方法已经混入按常规调用
+  // ! 方法已经混入按常规调用，也没有什么特别前缀
 })
 
 /* 结果：输入1,2两个组件合并但不覆盖 */
