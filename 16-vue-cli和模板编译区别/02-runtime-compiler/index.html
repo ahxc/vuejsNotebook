@@ -18,15 +18,21 @@
 
 
 <script>
-/*
-template最终会被渲染为render函数，记住这个结论
-将template在打包的时候，就已经编译为render函数，代码体积更轻运行速度更快。
-但模板文件只允许在.vue里
+  // "use strict";
 
-  runtime-only：
-  render --> vDom(虚拟Dom)-- > 真实的Dom-- > 页面;
+  function name(params) {
+    console.log(this);
+  }
+  name(); // 严格模式下 undefined，反之window
 
-  runtime - compiler:
-  template-- > ast(抽象语法树)-- > render-- > vDom(虚拟Dom)-- > 真实的Dom-- > 页面;
-    * /
+  // template最终会被渲染为render函数，记住这个结论
+  // 将template在打包的时候，就已经编译为render函数，代码体积更轻运行速度更快。
+  // 但模板文件只允许在.vue里
+
+  //   runtime-only：
+  //   render --> vDom(虚拟Dom)-- > 真实的Dom-- > 页面;
+
+  //   runtime - compiler;
+  //   template-- > ast(抽象语法树)-- > render-- > vDom(虚拟Dom)-- > 真实的Dom-- > 页面
+
 </script>
