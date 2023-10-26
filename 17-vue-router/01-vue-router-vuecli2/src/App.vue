@@ -21,20 +21,30 @@
       <!-- router-view决定渲染出来的组件放在什么位置 -->
       <router-view />
     </keep-alive>
+    <!-- vue3新写法 -->
+    <!-- keep-alive包裹缓存的组件，生命周期全部只执行一次，destroy vue3已废弃更名为unmounted。只重复执行activate和deactivated -->
+    <!-- 被keep-alive包裹的组件unmounted和beforeUnmount不会调用 -->
+    <!-- 执行顺序：deactivated->beforeCreate->created->beforeMount->mounted->activated -->
+    <router-view v-slot="{ Component }">
+      <!-- 缓存name名称为aaa和bbb的组件 -->
+      <keep-alive :include="['Child',]">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      userId: 'zty',
+      userId: "zty",
       profileInfo: {
         name: "zty",
         age: 24,
-        height: 177
-      }
+        height: 177,
+      },
     };
   },
   methods: {
@@ -43,40 +53,41 @@ export default {
       // 编写代码1.push 等价于pushState
       // $表示与用户自定义的属性区分开来，所有组件源属性
       // $router该属性表示当前活跃的路由
-      this.$router.push('/home');
+      this.$router.push("/home");
       // 编写代码2.replace 等价于replaceState
       // this.$router.replace('/home')
       // $history.pushstate()也是可以的，但绕过了路由不推荐
       console.log("homeClick");
     },
     aboutClick() {
-      this.$router.push('/about');
+      this.$router.push("/about");
       // 3.replace 等价于replaceState
       // this.$router.replace('/about')
       console.log("aboutClick");
     },
     // 这里用的router-link因此该函数没有调用
     userClick() {
-      this.$router.push('/user/' + this.userId);
+      this.$router.push("/user/" + this.userId);
       console.log("userClick");
     },
     profileClick() {
       let profileInfo = this.profileInfo;
       this.$router.push({
-        path: '/profile',
-        query: {//
-          profileInfo
-        }
+        path: "/profile",
+        query: {
+          //
+          profileInfo,
+        },
       });
       console.log("profileClick");
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

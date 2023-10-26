@@ -3,20 +3,44 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
   <title>组件通信-父子通信案例(watch实现)</title>
 </head>
 
 <body>
   <!-- 父组件 -->
   <div id="app">
+    <li
+      v-for="(item, index) in list"
+      :key="index"
+    >
+      <component :is="cpn"></component>
+      index
+    </li>
     <!-- 3.父组件通过监听子num1change发送过父num1Change -->
-    <cpn :number1='num1' :number2='num2' @num1change="num1Change" @num2change="num2Change"></cpn>
+    <cpn
+      :number1='num1'
+      :number2='num2'
+      @num1change="num1Change"
+      @num2change="num2Change"
+    ></cpn>
     <h2>父组件{{num1}}</h2>
-    <input type="text" v-model="num1" >
+    <input
+      type="text"
+      v-model="num1"
+    >
     <h2>父组件{{num2}}</h2>
-    <input type="text" v-model="num2">
+    <input
+      type="text"
+      v-model="num2"
+    >
   </div>
 
   <!-- 子组件 -->
@@ -25,9 +49,15 @@
       <h2>{{number1}}</h2>
       <!-- 双向绑定的子传父的方法二，watch监听，其实就是watch代替了此处本该有的v-on -->
       <!-- 1.子组件发生了事件 -->
-      <input type="text" v-model="dnumber1">
+      <input
+        type="text"
+        v-model="dnumber1"
+      >
       <h2>{{number2}}</h2>
-      <input type="text" v-model="dnumber2">
+      <input
+        type="text"
+        v-model="dnumber2"
+      >
     </div>
   </template>
 
@@ -39,22 +69,22 @@
       data() {
         return {
           dnumber1: this.number1,
-          dnumber2: this.number2
-        }
+          dnumber2: this.number2,
+        };
       },
-      props:{
-        number1:[Number,String],
-        number2:[Number,String],
+      props: {
+        number1: [Number, String],
+        number2: [Number, String],
       },
       watch: {
         // 2.监听打包发送
-        dnumber1(newValue){
-          this.dnumber1 = newValue * 100
-          this.$emit('num1change',newValue)
+        dnumber1(newValue) {
+          this.dnumber1 = newValue * 100;
+          this.$emit('num1change', newValue);
         },
-        dnumber2(newValue){
-          this.dnumber1 = newValue * 100
-          this.$emit('num2change',newValue)
+        dnumber2(newValue) {
+          this.dnumber1 = newValue * 100;
+          this.$emit('num2change', newValue);
         }
       },
     };
@@ -62,17 +92,18 @@
       el: "#app",
       data() {
         return {
-          num1:1,
-          num2:2,
-        }
+          num1: 1,
+          num2: 2,
+          list: [1, 2, 3, 4, 5, 6]
+        };
       },
       methods: {
-        num1Change(value){
+        num1Change(value) {
           // 4.父num1发送给了父data
-          this.num1=value
+          this.num1 = value;
         },
-        num2Change(value){
-          this.num1=value
+        num2Change(value) {
+          this.num1 = value;
         }
       },
       components: {
@@ -81,4 +112,5 @@
     })
   </script>
 </body>
+
 </html>
