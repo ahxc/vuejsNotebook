@@ -285,24 +285,16 @@ watcher定义了很多原型方法，实例化时会触发get()方法
 
 如何优化：我所做的处理，v-for是用来遍历一个data，在这个data递交给v-for时，先做好筛选。
 
-### vue通信
+Vue.js DevTools 是一款浏览器插件，主要用于开发调试 Vue.js 应用。它可以帮助开发者在浏览器中更好地观察、调试和分析 Vue.js 应用程序的状态、数据和事件等。
 
-[SegmentFault](https://segmentfault.com/a/1190000019208626)
+具体来说，Vue.js DevTools 的作用包括：
 
-1、v-bind:和props父传子，
+1. 组件树：在开发者工具中可以查看 Vue.js 应用程序的组件树，了解当前组件层次结构以及它们之间的关系。
+2. 组件属性：可以查看和修改每个组件的属性，包括数据、样式、样式等。
+3. 事件调试：可以跟踪和调试 Vue.js 应用程序中的事件，例如点击事件、鼠标事件等。
+4. 性能分析：可以分析 Vue.js 应用程序的性能瓶颈，帮助开发者优化代码和性能。
+5. 路由管理：可以查看和管理 Vue.js 应用程序的路由信息。
+6. 网络请求：可以查看和分析 Vue.js 应用程序的网络请求和响应。
+7. 自定义插件：可以自定义插件来扩展 Vue.js DevTools 的功能。
 
-2、v-on@和$emit子传父
-
-3、vuex state mutation action getter
-
-4、localstorage
-
-5、总线bus（不推荐）数据流结构不清晰
-
-6、$attrs和$listeners
-
-7、$parent/$children（不推荐）数据流结构不清晰
-
-8、this.$refs.name，ref="name"，ref写在模板上即dom，写在组件标签上即组件
-
-9、provide和inject
+总之，Vue.js DevTools 是开发调试 Vue.js 应用程序的重要工具，可以帮助开发者更好地理解和优化应用程序。
