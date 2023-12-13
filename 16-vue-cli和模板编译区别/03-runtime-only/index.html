@@ -26,8 +26,25 @@
   // runtime-only：
   // render --> vDom(虚拟Dom)-- > 真实的Dom-- > 页面;
 
+  new Vue({
+    el: '#app',
+    // template在打包时就编译成render
+    render: h => h(App)
+    // 方法1.h函数可比作：createdElemnet("标签", {标签的属性：值,}, ["dom"])
+    // 标签指id，属性即class，name等，dom即<html>包裹的元素，即render函数
+    // <div id=h2 class="">dom</div>
+  })
+
   // runtime - compiler：
   // template-- > ast(抽象语法树)-- > render-- > vDom(虚拟Dom)-- > 真实的Dom-- > 页面
+
+  new Vue({
+    el: '#app',
+    components: { App },
+    // 组件里使用template的都是runtime-compiler模式
+    template: '<App/>'// 节点没有元素时可以只写尾部</>
+    // 方法2.直接传入一个组件
+  });
 
   const options = {
     year: 'numeric',
