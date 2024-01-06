@@ -22,7 +22,7 @@ export const $_backTop = {
   },
 };
 
-/* 2.子/孙子组件中inject注入 */
+/* 2.子/孙子组件中inject注入，注意，是子孙后代方能使用 */
 export default {
   inject: ['nameObj', 'age', 'cityFn'],
   created: function () { console.log(2); },
